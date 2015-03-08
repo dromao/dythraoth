@@ -1,0 +1,40 @@
+CREATE TABLE active_alerts (
+  name varchar(30) primary key,
+  alerttext longtext,
+  start_time datetime
+);
+CREATE TABLE global_config(
+  name varchar(30) PRIMARY KEY,
+  value mediumtext
+);
+CREATE TABLE hist_alerts (
+  id integer primary key autoincrement,
+  name varchar(30),
+  alerttext longtext,
+  start_time timestamp,
+  stop_time timestamp
+);
+CREATE TABLE np_baseline (
+  daytime_proto varchar(20) PRIMARY KEY,
+  flows int,
+  packets int,
+  bytes int
+);
+CREATE TABLE p_baseline (
+  daytime_proto_port varchar(30) PRIMARY KEY,
+  srcflows int,
+  srcpackets int,
+  srcbytes int,
+  dstflows int,
+  dstpackets int,
+  dstbytes int
+);
+CREATE TABLE profiles (
+  name varchar(20) PRIMARY KEY,
+  proto varchar(3),
+  port int,
+  valf decimal(10,2),
+  valp decimal(10,2),
+  valb decimal(10,2),
+  mode boolean
+);
